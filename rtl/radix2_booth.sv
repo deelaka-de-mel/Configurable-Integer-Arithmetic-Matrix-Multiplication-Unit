@@ -14,8 +14,8 @@ module radix2_booth#(
 	logic [7:0]   counter;
 	logic [N:0] M_bar, M_ext;
 	
-	assign M_ext = {M[N-1],M};
-	assign M_bar = ~M_ext + 1'b1;
+	assign M_ext = {M[N-1],M};  //extended M
+	assign M_bar = ~M_ext + 1'b1;   //twos complement of M
 	
 	always_ff @(posedge clk or posedge reset) begin
 		
@@ -23,6 +23,8 @@ module radix2_booth#(
 			 state <= IDLE;
 			 accumulator <= 0;
 			 counter <=0;
+			 result <=0;
+			 done <=0;
 		end
 		
 		else begin
