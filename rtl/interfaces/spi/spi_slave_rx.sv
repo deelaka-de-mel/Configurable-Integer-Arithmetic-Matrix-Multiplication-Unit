@@ -1,4 +1,4 @@
-module spi_slave#(
+module spi_slave_rx#(
     parameter int width = 8 ;
 )(
     input logic sclk,
